@@ -11,7 +11,7 @@ import SwiftUI
 struct UrlImageApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            UrlImageView()
         }
     }
 }
