@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct SubmitUrlImageView: View {
-    @State var textFieldUrl: String = ""
-    @State var showImage: Bool = false
     @State var imageUrl: String = ""
+    @State var showImage: Bool = false
+    //@State var imageUrl: String = ""
     var body: some View {
         
-        if textFieldUrl.isEmpty {
+        if imageUrl.isEmpty {
             Text("Enter your Image Url Here!")
                 .font(.largeTitle)
                 .multilineTextAlignment(.center)
             Image(systemName: "link")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
-            TextField("Enter Url...", text: $textFieldUrl)
+            TextField("Enter Url...", text: $imageUrl)
             Button(action: {
                 save()
             }, label: {
@@ -35,11 +35,12 @@ struct SubmitUrlImageView: View {
         
         else{
             if imageUrl.count > 0 {
-                let url = URL(string: imageUrl)
+                //let url = URL(string: imageUrl)
+                AsyncImage(url: URL(string: imageUrl))
                 //.frame(maxWidth: .infinity, maxHeight: .infinity)
                 Button(action: {
-                    delete()
-                    textFieldUrl = ""
+                    //delete()
+                    imageUrl = ""
                 }, label: {
                     Text("Add another Url")
                 })
@@ -47,18 +48,18 @@ struct SubmitUrlImageView: View {
         }
     }
     func save(){
-        //        imageUrl.append(path: textFieldUrl)
+        //       imageUrl.append(textFieldUrl)
         //        showImage.toggle()
-        imageUrl = textFieldUrl
+        //imageUrl = textFieldUrl
     }
     func delete() {
-        textFieldUrl = ""
+        imageUrl = ""
         imageUrl = ""
     }
     
 }
     struct SubmitUrlImageView_Previews: PreviewProvider {
         static var previews: some View {
-            SubmitUrlImageView()
+            UrlImageView()
         }
     }
